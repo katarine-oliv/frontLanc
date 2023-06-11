@@ -1,0 +1,23 @@
+.card_l{
+  display: inline-flex;
+  padding: 20px;
+}
+
+.card-title{
+  text-align: center;
+}
+
+.card{
+   border-color: black;
+  border-width: 1px;
+  background-color: lightgrey;
+}
+
+.navbar{
+  background-color: lightgrey;
+}
+
+.containerC{
+  padding-top: 50px;
+  padding-left: 50px;
+}

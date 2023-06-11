@@ -1,0 +1,146 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+
+  <div class="botao">
+    <button type="button" class="btn btn-secondary btn-sm" routerLink="/principal"> Voltar</button>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-100 col-md-100 col-lg-10 mx-auto">
+      <div class="card border-opacity-10 shadow rounded-15 my-15">
+        <div class="card-body p-10 p-sm-9">
+          <h4 class="card-title text-center mb-5 fw-regular fs-5">
+            Controle de Produtos
+          </h4>
+          <form >
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input [(ngModel)]="produto.nome" name="nome" type="text" class="form-control" id="nome" placeholder="Digite o nome do produto">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+              <label for="valor">Valor:</label>
+              <input [(ngModel)]="produto.valor" name="valor" type="number" class="form-control" id="valor" placeholder="Digite o valor do produto">
+            </div>
+
+            <br>
+
+
+            <div class="form-group">
+              <label for="descricao">Descrição:</label>
+              <input [(ngModel)]="produto.descricao" class="form-control" name="descricao" id="descricao" type="text">
+            </div>
+
+            <br>
+
+            <div [ngSwitch]="opcao">
+              <button *ngSwitchCase="'editar'" (click)="update()" type="button" class="btn btn-success btn-lg">Salvar</button>
+              <button *ngSwitchCase="'cadastrar'" (click)="cadastrar()" type="button" class="btn btn-success btn-lg" >Cadastrar</button>
+            </div>
+
+            <br>
+          </form >
+        </div>
+
+        <h4 class="card-title text-center fw-regular fs-5">
+          Produtos cadastrados
+        </h4>
+
+        <div class="tabela">
+          <table class="table table-sm">
+            <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Nome</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Opção 1</th>
+              <th scope="col">Opção 2</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let pro of produtos; index as i">
+              <th scope="row">{{i}}</th>
+              <th scope="row">{{pro.nome}}</th>
+              <th scope="row">{{pro.valor}}</th>
+              <th scope="row">{{pro.descricao}}</th>
+              <th>
+                <button (click)="editar(pro.id)" type="button" class="btn btn-outline-info">Editar</button>
+              </th>
+                <th>
+                <button (click)="deletar(pro.id)" type="button" class="btn btn-outline-danger">Excluir</button>
+                </th>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!--<div class="container">
+    <div class="row">
+      <div class="col-sm-100 col-md-100 col-lg-10 mx-auto">
+        <div class="card border-0 shadow rounded-9 my-9">
+          <div class="card-body p-10 p-sm-9">
+            <h4 class="card-title text-center mb-5 fw-light fs-5">
+              Controle de produtos
+            </h4>
+             <form >
+              <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input [(ngModel)]="produto.nome" name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome do produto">
+              </div>
+
+              <div class="form-group">
+                <label for="valor">Valor:</label>
+                <input [(ngModel)]="produto.valor" name="valor" type="number" class="form-control" id="valor" placeholder="Informe o valor do produto">
+              </div>
+              <br><br>
+              <div [ngSwitch]="opcao">
+                <button *ngSwitchCase="'editar'" (click)="update()" class="btn btn-lg btn-primary btn-lock">Salvar</button>
+                <button *ngSwitchCase="'cadastrar'" (click)="cadastrar()"   class="btn btn-lg btn-primary btn-block" >Cadastrar</button>
+              </div>
+              <br>
+            </form >
+          </div>
+
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">NOME</th>
+              <th scope="col">TELEFONE</th>
+              <th scope="col">OPÇÕES</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let pro of produtos; index as i">
+              <th scope="row">{{i}}</th>
+              <th>{{pro.nome}}</th>
+              <th>{{pro.valor}}</th>
+              <th>
+                <button (click)="editar(pro.id)" class="btn btn-warning">EDITAR</button>
+                <br>
+                <button (click)="deletar(pro.id)" class="btn btn-danger">DELETAR</button>
+              </th>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <button class="btn btn-lg btn btn-secondary btn-block" routerLink="/principal"> Voltar</button>
+      </div>
+    </div>
+  </div>-->
+
+

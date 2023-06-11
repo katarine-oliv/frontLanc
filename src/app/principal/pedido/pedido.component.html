@@ -1,0 +1,70 @@
+<!--
+ <div class="container">
+    <div class="row">
+      <div class="col-sm-100 col-md-100 col-lg-10 mx-auto">
+        <div class="card border-0 shadow rounded-9 my-9">
+          <div class="card-body p-10 p-sm-9">
+            <h4 class="card-title text-center mb-5 fw-light fs-5">
+              Controle de pedidos
+            </h4>
+             <form >
+                <div class="form-group" *ngIf="opcao != 'editar'">
+                    <label for="cliente">Cliente:</label>
+                    <select [(ngModel)]="pedido.cliente" name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome do produto">
+                        <option *ngFor="let cli of clientes" [ngValue]="cli">{{cli.nome}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" *ngIf="opcao != 'editar'">
+                    <label for="cliente">Produto:</label>
+                    <select [(ngModel)]="pedido.produto" name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome do produto">
+                        <option *ngFor="let pro of produtos" [ngValue]="pro">{{pro.nome}}</option>
+                    </select>
+                </div>
+
+              <div class="form-group">
+                <label for="nome">Quantidade:</label>
+                <input [(ngModel)]="pedido.quantidade" name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome do produto">
+              </div>
+
+              <br><br>
+              <div [ngSwitch]="opcao">
+                <button *ngSwitchCase="'editar'" (click)="update()" class="btn btn-lg btn-primary btn-lock">Salvar</button>
+                <button *ngSwitchCase="'cadastrar'" (click)="cadastrar()"   class="btn btn-lg btn-primary btn-block" >Cadastrar</button>
+              </div>
+              <br>
+            </form >
+          </div>
+
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">CLIENTE</th>
+              <th scope="col">PRODUTO</th>
+              <th scope="col">QUANTIDADE</th>
+              <th scope="col">OPÇÕES</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let ped of pedidos; index as i">
+              <th scope="row">{{i}}</th>
+              <th>{{ped.cliente?.nome}}</th>
+              <th>{{ped.produto?.nome}}</th>
+              <th>{{ped.quantidade}}</th>
+              <th>
+                <button (click)="editar(ped.id)" class="btn btn-warning">EDITAR</button>
+                <br>
+                <button (click)="deletar(ped.id)" class="btn btn-danger">DELETAR</button>
+              </th>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-lg btn btn-secondary btn-block" routerLink="/principal"> Voltar</button>
+      </div>
+    </div>
+  </div>
+-->
+

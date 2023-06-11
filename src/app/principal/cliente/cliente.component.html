@@ -1,0 +1,99 @@
+
+<div class="container">
+
+  <div class="botao">
+    <button type="button" class="btn btn-secondary btn-sm" routerLink="/principal"> Voltar</button>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-100 col-md-100 col-lg-10 mx-auto">
+      <div class="card border-opacity-10 shadow rounded-15 my-15">
+        <div class="card-body p-10 p-sm-9">
+          <h4 class="card-title text-center mb-5 fw-regular fs-5">
+            Controle de Clientes
+          </h4>
+           <form >
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input [(ngModel)]="cliente.nome" name="nome" type="text" class="form-control" id="nome" placeholder="Digite o nome do cliente">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+              <label for="telefone">Telefone:</label>
+              <input [(ngModel)]="cliente.telefone" name="telefone"  class="form-control" id="telefone" placeholder="9 9999-9999">
+            </div>
+
+             <br>
+
+             <div class="form-group">
+               <label for="email">Email:</label>
+               <input [(ngModel)]="cliente.email" name="email"  class="form-control" id="email" placeholder="Digite o email">
+             </div>
+
+             <br>
+
+             <div class="form-group">
+               <label for="cpf">CPF:</label>
+               <input [(ngModel)]="cliente.cpf" name="cpf"  class="form-control" id="cpf" placeholder="999.999.999-99">
+             </div>
+
+            <br>
+            <div [ngSwitch]="opcao">
+
+                <button *ngSwitchCase="'editar'" (click)="update()" type="button" class="btn btn-success btn-lg">Salvar</button>
+
+                <button *ngSwitchCase="'cadastrar'" (click)="cadastrar()" type="button" class="btn btn-success btn-lg" >Cadastrar</button>
+
+            </div>
+            <br>
+          </form >
+        </div>
+
+        <h4 class="card-title text-center fw-regular fs-5">
+          Clientes cadastrados
+        </h4>
+
+        <div class="tabela">
+        <table class="table">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Email</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Opção 1</th>
+            <th scope="col">Opção 2</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let cli of clientes; index as i" >
+            <th scope="row">{{i}}</th>
+            <th>{{cli.nome}}</th>
+            <th>{{cli.telefone}}</th>
+            <th>{{cli.email}}</th>
+            <th>{{cli.cpf}}</th>
+              <th>
+              <button (click)="editar(cli.id)" type="button" class="btn btn-outline-info">Editar</button>
+              </th>
+             <th>
+              <button (click)="deletar(cli.id)" type="button" class="btn btn-outline-danger">Excluir</button>
+              </th>
+          </tr>
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+
+      </div>
+
+  </div>
+
+</div>
+
+
