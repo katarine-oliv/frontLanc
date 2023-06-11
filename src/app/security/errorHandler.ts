@@ -14,7 +14,7 @@ export class ErrorHandlerService extends ErrorHandler{
     if(error instanceof HttpErrorResponse){
       switch (error.status){
         case 400:
-          alert('Usuário ou Senha incorretos')
+          alert('Email ou senha incorretos!')
           break;
         case 401:
           sessionStorage.removeItem("token")

@@ -6,6 +6,7 @@ import {ClienteComponent} from "./principal/cliente/cliente.component";
 import {AuthGuards} from "./security/auth.guards";
 import { ProdutoComponent } from './principal/produto/produto.component';
 import { PedidoComponent } from './principal/pedido/pedido.component';
+import {FuncionarioComponent} from "./principal/funcionario/funcionario.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch:'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'cliente', component: ClienteComponent, canActivate: [AuthGuards]},
   {path: 'produto', component: ProdutoComponent, canActivate: [AuthGuards]},
   {path: 'pedido', component: PedidoComponent, canActivate: [AuthGuards]},
+  {path: 'funcionario', component: FuncionarioComponent, canActivate: [AuthGuards]},
   {path: "**", component: LoginComponent}];
 
 @NgModule({
