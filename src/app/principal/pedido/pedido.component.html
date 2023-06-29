@@ -10,21 +10,21 @@
              <form >
                 <div class="form-group" *ngIf="opcao != 'editar'">
                     <label for="cliente">Cliente:</label>
-                    <select [(ngModel)]="pedido.cliente" name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome do produto">
+                    <select [(ngModel)]="pedido.cliente" name="nome" type="text" class="form-control" id="cliente">
                         <option *ngFor="let cli of clientes" [ngValue]="cli">{{cli.nome}}</option>
                     </select>
                 </div>
 
                 <div class="form-group" *ngIf="opcao != 'editar'">
-                    <label for="cliente">Produto:</label>
-                    <select [(ngModel)]="pedido.produto" name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome do produto">
+                    <label for="produto">Produto:</label>
+                    <select [(ngModel)]="pedido.produto" name="nome" type="text" class="form-control" id="produto">
                         <option *ngFor="let pro of produtos" [ngValue]="pro">{{pro.nome}}</option>
                     </select>
                 </div>
 
               <div class="form-group">
-                <label for="nome">Quantidade:</label>
-                <input [(ngModel)]="pedido.quantidade" name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome do produto">
+                <label for="quantidade">Quantidade:</label>
+                <input [(ngModel)]="pedido.quantidade" name="nome" type="text" class="form-control" id="quantidade">
               </div>
 
               <br><br>
@@ -39,8 +39,8 @@
           <table class="table">
             <thead class="thead-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">CLIENTE</th>
+              <th scope="col"></th>
+              <th scope="col">Cliente</th>
               <th scope="col">PRODUTO</th>
               <th scope="col">QUANTIDADE</th>
               <th scope="col">OPÇÕES</th>
@@ -65,6 +65,106 @@
         <button class="btn btn-lg btn btn-secondary btn-block" routerLink="/principal"> Voltar</button>
       </div>
     </div>
+  </div> -->
+
+<div class="container">
+  <div class="botao">
+    <button type="button" class="btn btn-secondary btn-sm" routerLink="/principal">Voltar</button>
   </div>
--->
+
+  <div class="row">
+    <div class="col-sm-100 col-md-100 col-lg-10 mx-auto">
+      <div class="card border-opacity-10 shadow rounded-15 my-15">
+        <div class="card-body p-10 p-sm-9">
+          <h4 class="card-title text-center mb-5 fw-regular fs-5">Controle de Pedidos</h4>
+          <form>
+            <div class="form-group" *ngIf="opcao !== 'editar'">
+              <label for="cliente">Cliente:</label>
+              <select [(ngModel)]="pedido.cliente" name="nome" type="text" class="form-control" id="cliente">
+                <option *ngFor="let cli of clientes" [ngValue]="cli">{{cli.nome}}</option>
+              </select>
+            </div>
+
+            <br>
+
+            <div class="form-group" *ngIf="opcao !== 'editar'">
+              <label for="produto">Produto:</label>
+              <select [(ngModel)]="pedido.produto" name="nome" type="text" class="form-control" id="produto">
+                <option *ngFor="let pro of produtos" [ngValue]="pro">{{pro.nome}}</option>
+              </select>
+              <div *ngIf="pedido.produto">
+                <label for="valorUnitario">Valor Unitário:</label>
+                <input [(ngModel)]="pedido.produto.valor" class="form-control" name="valorUnitario" id="valorUnitario" type="text" disabled>
+                <label for="valorTotal">Valor Total:</label>
+                <input [(ngModel)]="pedido.total" [value]="pedido.produto.valor && pedido.quantidade ? pedido.produto.valor * pedido.quantidade : 0" class="form-control" name="valorTotal" id="valorTotal" type="text" disabled>
+              </div>
+            </div>
+
+
+            <br>
+
+            <div class="form-group">
+              <label for="quantidade">Quantidade:</label>
+              <input [(ngModel)]="pedido.quantidade" name="quantidade" type="text" class="form-control" id="quantidade">
+            </div>
+
+            <br>
+
+            <div class="form-group">
+              <label for="descricao">Observação:</label>
+              <input [(ngModel)]="pedido.observacao" class="form-control" name="descricao" id="descricao" type="text">
+            </div>
+
+            <br>
+
+            <div [ngSwitch]="opcao">
+              <button *ngSwitchCase="'editar'" (click)="update()" type="button" class="btn btn-success btn-lg">Salvar</button>
+              <button *ngSwitchCase="'cadastrar'" (click)="cadastrar()" type="button" class="btn btn-success btn-lg">Cadastrar</button>
+            </div>
+            <br>
+          </form>
+        </div>
+
+        <h4 class="card-title text-center fw-regular fs-5">Pedidos cadastrados</h4>
+
+        <div class="tabela">
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Cliente</th>
+              <th scope="col">Produto</th>
+              <th scope="col">Quantidade</th>
+              <th scope="col">Observação</th>
+              <th scope="col">Valor Total</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Excluir</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ped of pedidos; index as i">
+              <th scope="row">{{i}}</th>
+              <td>{{ped.cliente?.nome}}</td>
+              <td>{{ped.produto?.nome}}</td>
+              <td>{{ped.quantidade}}</td>
+              <td>{{ped.observacao}}</td>
+              <td>{{ped.total}}</td>
+              <td>
+                <button (click)="editar(ped.id)" type="button" class="btn btn-outline-info">Editar</button>
+              </td>
+              <td>
+                <button (click)="deletar(ped.id)" type="button" class="btn btn-outline-danger">Excluir</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 

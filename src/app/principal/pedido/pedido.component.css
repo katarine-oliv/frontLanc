@@ -1,0 +1,25 @@
+
+.botao{
+  padding-top: 25px;
+  padding-right: 50px;
+}
+
+.tabela{
+  padding: 25px;
+}
+
+.botaoSal{
+  display: inline;
+}
+
+.botaoCad{
+  display: inline;
+}
+
+.botaoExcluir{
+  padding-left: 15px;
+}
+
+.card{
+  background-color: lightgrey;
+}
