@@ -10,13 +10,13 @@
           <form >
 
             <div class="form-group">
-              <label for="login">Email:</label>
-              <input [(ngModel)]="usuario.login" name="login" type="email" class="form-control" id="login" aria-describedby="email" placeholder="Digite seu email">
+              <label for="funcionario">Email:</label>
+              <input [(ngModel)]="funcionario.email" type="email" class="form-control" id="funcionario" aria-describedby="email" placeholder="Digite seu email">
             </div>
 
             <div class="form-group">
               <label for="senha">Senha:</label>
-              <input [(ngModel)]="usuario.senha" name="senha" type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+              <input [(ngModel)]="funcionario.senha"  type="password" class="form-control" id="senha" placeholder="Digite sua senha">
             </div>
             <br>
             <button (click)="logar()" type="submit" class="btn btn-lg btn-primary btn-block" >Entrar</button>
